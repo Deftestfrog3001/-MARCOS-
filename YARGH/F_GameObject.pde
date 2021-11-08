@@ -3,6 +3,7 @@ class GameObject {
   PVector loc;
   PVector vel;
   int size; 
+  int roomX, roomY;
 
   GameObject() {
     loc = new PVector(width/2, height/2);

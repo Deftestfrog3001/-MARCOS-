@@ -5,12 +5,13 @@ class Projectile extends GameObject {
 
   Projectile(PVector aim, color f, int s) {
     hp = 1;
-    loc = new PVector(p1.loc.x, p1.loc.y);
+    loc = p1.loc.copy();
     vel = aim;
-    vel.add(p1.vel);
     fc = f;
     size = s;
     duration=180;
+    roomX = p1.roomX;
+    roomY = p1.roomY;
   }
 
   void show() {

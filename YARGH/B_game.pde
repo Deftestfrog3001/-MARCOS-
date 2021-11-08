@@ -87,10 +87,10 @@ void drawMiniMap() {
       fill (c);
     }
     square(x*size, y*size, size);
-
+    
+    if (y >= map.height)
+    break;
     x = x + 1;
-    if (y - 1 >= map.height) 
-      break;
 
     if (x >= map.width) {
       y = y + 1; 
