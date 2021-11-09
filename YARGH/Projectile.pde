@@ -1,13 +1,13 @@
-class Projectile extends GameObject {
+private class Projectile extends GameObject {
 
-  int fc;
+  int fs;
   int duration;
 
   Projectile(PVector aim, color f, int s) {
     hp = 1;
     loc = p1.loc.copy();
     vel = aim;
-    fc = f;
+    fs = f;
     size = s;
     duration=180;
     roomX = p1.roomX;
@@ -15,8 +15,8 @@ class Projectile extends GameObject {
   }
 
   void show() {
-    stroke(255);
-    fill(fc);
+    noStroke();
+    fill(fs);
     ellipse(loc.x, loc.y, size, size);
   }
 

@@ -25,7 +25,7 @@ class Weapon {
       PVector aimVector = new PVector(mouseX-p1.loc.x, mouseY-p1.loc.y);
       aimVector.setMag(projectileSpeed);
       println("L");
-      myObjects.add(new Projectile(aimVector, red, 10));
+      myObjects.add(new Projectile(aimVector, yellow, 10));
       shotTimer = 0;
     }
   }

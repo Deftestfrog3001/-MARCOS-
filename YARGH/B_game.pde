@@ -71,28 +71,31 @@ void drawLightLayer() {
     DarkCell dark = DC.get(i);
     dark.show();
   }
+  noFill();
 }
 
 void drawMiniMap() {
+  noStroke();
+  noFill();
   rectMode(CORNER);
   float size = 10;
   int x = 0;
   int y = 0;
 
-  while (x <= map.width) {
+  while (y < map.height) {
     color c = map.get(x, y);
     if (p1.roomX == x && p1.roomY == y) { 
       fill(aqua);
     } else {
-      fill (c);
+      fill (c, 50);
     }
     square(x*size, y*size, size);
-    
-    if (y >= map.height)
-    break;
+
+    if (y == map.height)
+      break;
     x = x + 1;
 
-    if (x >= map.width) {
+    if (x == map.width) {
       y = y + 1; 
       x = 0;
     } 

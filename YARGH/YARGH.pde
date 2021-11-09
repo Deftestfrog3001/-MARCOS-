@@ -81,6 +81,7 @@ void setup() {
   myObjects = new ArrayList<GameObject>();
   myObjects.add(p1);
   myObjects.add(new Enemy());
+  println("spawned");
 
   //Create DarkGrid
   rectMode(CORNER);
