@@ -31,7 +31,7 @@ class Enemy extends GameObject {
   void act() {
     super.act();
 
-    //bullet collision
+    //bullet collision and taking damage
     int i = 0;
     while (i < OBJ.size()) {
       GameObject myOb = OBJ.get(i);
