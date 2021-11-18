@@ -1,7 +1,7 @@
 void game() {
   drawroom();
   drawGameObjects();  
-  //drawLightLayer();
+  drawLightLayer();
   drawMiniMap();
 
   println(p1.loc);
@@ -55,9 +55,10 @@ void drawGameObjects() {
   int i = 0;
   while (i < OBJ.size()) {
     GameObject myOb = OBJ.get(i);
-    if (myOb.roomX == p1.roomX && myOb.roomY == p1.roomY)
-    myOb.show();
-    myOb.act();
+    if (myOb.roomX == p1.roomX && myOb.roomY == p1.roomY) {
+      myOb.show();
+      myOb.act();
+    }
 
     if (myOb.hp <= 0) {
       OBJ.remove(i);
@@ -85,13 +86,14 @@ void drawMiniMap() {
 
   while (y < map.height) {
     color c = map.get(x, y);
+    //Current Room Indicator
     if (p1.roomX == x && p1.roomY == y) { 
       fill(aqua);
     } else {
       if (c == white) {
         fill (c);
       } else {
-        fill (c, 50);
+        fill (c, 200);
       }
     }
     square(x*size, y*size, size);
