@@ -1,5 +1,11 @@
 class Sniper extends Weapon {
   Sniper() {
-    super (100, 20);
+    super (Sniper_thr, Sniper_PS);
+  }
+}
+
+class MP5 extends Weapon {
+  MP5() {
+    super(MP5_thr, MP5_PS);
   }
 }

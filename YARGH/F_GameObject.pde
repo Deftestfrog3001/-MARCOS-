@@ -23,4 +23,19 @@ class GameObject {
     if (loc.y < height*0.1) loc.y = height*0.1;
     if (loc.y > height*0.9) loc.y = height*0.9;
   }
+
+  boolean RoomWith(GameObject OBJ) {
+   
+    return (roomX == OBJ.roomX && roomY == OBJ.roomY);
+  }
+
+  boolean CollidingWith(GameObject OBJ) {
+    float d = dist(OBJ.loc.x, OBJ.loc.y, loc.x, loc.y);
+    if (RoomWith(OBJ) && d <= OBJ.size/2 + size/2) {
+      return true;
+      
+    }
+    else
+      return false;
+  }
 }

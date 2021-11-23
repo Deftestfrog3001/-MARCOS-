@@ -4,10 +4,11 @@ class Weapon {
   int threshold;
   int projectileSpeed;
 
+  //default weapon
   Weapon() {
     shotTimer = 0;
     threshold = 15;
-    projectileSpeed = 8;
+    projectileSpeed = 5;
   }
 
   Weapon(int thr, int ps) {
@@ -24,8 +25,7 @@ class Weapon {
     if (shotTimer >= threshold) {
       PVector aimVector = new PVector(mouseX-p1.loc.x, mouseY-p1.loc.y);
       aimVector.setMag(projectileSpeed);
-      println("L");
-      myObjects.add(new Projectile(aimVector, yellow, 10));
+      OBJ.add(new Projectile(aimVector, yellow, 10));
       shotTimer = 0;
     }
   }

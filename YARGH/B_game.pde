@@ -4,8 +4,8 @@ void game() {
   drawLightLayer();
   drawMiniMap();
 
-  println(p1.loc);
-  println(p1.vel);
+  //println(p1.loc);
+  //println(p1.vel);
   //println(frameRate);
 }
 

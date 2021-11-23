@@ -7,10 +7,23 @@ class Player extends GameObject {
     super();
     loc = new PVector (width/2, height/2);
     vel = new PVector (0, 0);
+    hp = 100;
+    speed = 4;
+    roomX = 7;
+    roomY = 1;
+    myWeapon = new Sniper();
+    ArrayList <Weapon> myWeapon;
+  }
+
+  Player(int x, int y) {
+    super();
+    loc = new PVector (width/2, height/2);
+    vel = new PVector (0, 0);
     hp = 1;
     speed = 4;
-    roomX = 1;
-    roomY = 1;
+    roomX = x;
+    roomY = y;
+    //Weapon swap
     myWeapon = new Weapon();
     ArrayList <Weapon> myWeapon;
   }
@@ -20,6 +33,9 @@ class Player extends GameObject {
     strokeWeight(5);
     stroke(red);
     circle(loc.x, loc.y, 40);
+    fill(white);
+    textSize(20);
+    text(hp, loc.x, loc.y);
   }
 
   void act() {
@@ -62,6 +78,24 @@ class Player extends GameObject {
     myWeapon.update();
     if (mousePressed && mode == GAME) {
       myWeapon.fire();
+    }
+
+    //take damage from
+    int i = 0;
+    while (i < OBJ.size()) {
+      GameObject myOb = OBJ.get(i);
+      //enemy_projectile
+      if (myOb instanceof EnemyProj && CollidingWith(myOb)) {
+        hp = hp - int(myOb.vel.mag());
+        myOb.hp = 0;
+      }
+      //enemy_touch
+      if (myOb instanceof Enemy && CollidingWith(myOb)) {
+        hp = hp - 25;
+        //println(myOb.roomX, myOb.roomY, roomX, roomY);
+      }
+      //println("?");
+      i++;
     }
   }
 }

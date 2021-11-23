@@ -1,3 +1,17 @@
+//settings
+  //enemies
+  int NightStalker_HP = 50;
+  int NightStalker_SIZE = 50;
+  
+  
+  
+  //weapons
+  int Sniper_thr = 100;
+  int Sniper_PS = 20;
+  
+  int MP5_thr = 10;
+  int MP5_PS = 8;
+
 //sound
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -10,30 +24,38 @@ import ddf.minim.ugens.*;
 Minim minim;
 AudioPlayer intro;
 
+//interactions
 boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
 boolean mouseReleased;
 boolean hadPressed;
+
+//gifs
 gif campfire;
-//DarkCell DC;
+
+//fonts
 PFont Pixel;
 
 //images
 PImage map;
+
 color northRoom, eastRoom, southRoom, westRoom;
 
 //textures
 PImage cobble;
 
 //color pallette
-color blue   = #28E7ED;
-color green  = #CEF255;
-color pink   = #F76DDC;
-color yellow = #FFF387;
-color black  = #000000;
-color white  = #FFFFFF;
-color red    = #FF0000;
-color aqua   = #09B6E8;
-color grey   = #817F7F;
+color red           = #FF0000;
+color green         = #00FF00;
+color blue          = #0000FF;
+color black         = #000000;
+color white         = #FFFFFF;
+color grey          = #808080;
+color pink          = #F76DDC;
+color yellow        = #FFFF00;
+color aqua          = #09B6E8;
+color skyBlue       = #28E7ED;
+color orangeGold    = #DAA520;
+color purple        = #800080;
 
 int mode;
 final int INTRO=0;
@@ -46,11 +68,13 @@ final int LOSS=4;
 Button StartB;
 
 //Game objects
-ArrayList<GameObject> myObjects;
+ArrayList<GameObject> OBJ;
 ArrayList<DarkCell> DC;
 Player p1;
+Enemy myEnemy;
+NightStalker myNightStalker;
 
-//cell size
+//Darckcell size
 int CellSize;
 
 void setup() {
@@ -61,11 +85,14 @@ void setup() {
   textAlign(CENTER, CENTER);
   imageMode(CENTER);
   colorMode(HSB, 360, 100, 100);
-  p1 = new Player();
   Pixel = createFont("alagard.ttf", 1);
   campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
   map = loadImage("map.png");
   textFont(Pixel);
+  p1 = new Player();
+  myEnemy = new Enemy();
+  myNightStalker = new NightStalker();
+  
 
   //cell size
   CellSize = 3;
@@ -76,12 +103,12 @@ void setup() {
 
   //textures
   cobble = loadImage("cobble.png");
-  
+
   //myObjects
-  myObjects = new ArrayList<GameObject>();
-  myObjects.add(p1);
-  myObjects.add(new Enemy());
-  println("spawned");
+  OBJ = new ArrayList<GameObject>();
+  OBJ.add(p1);
+  OBJ.add(myEnemy);
+  OBJ.add(myNightStalker);
 
   //Create DarkGrid
   rectMode(CORNER);
@@ -103,7 +130,51 @@ void setup() {
     } 
     rectMode(CENTER);
   }
-  println(DC.size());
+
+  //Stock Entities
+  x = 0;
+  y = 0;
+
+  while (y < map.height) {
+    color roomColor = map.get(x, y);
+    //color = enemy
+
+    //regular room
+    if (roomColor == black) {
+      OBJ.add(new Enemy(x, y));
+    }
+
+    //fight room
+    if (roomColor == purple) {
+      OBJ.add(new Enemy(x, y));
+
+      OBJ.add(new NightStalker(x, y));
+    }
+
+    //recovery room
+    if (roomColor == green) {
+    }
+
+    //tough room
+    if (roomColor == yellow) {
+    }
+
+    //boss room
+    if (roomColor == red) {
+    }
+
+    //start room
+    if (roomColor == orangeGold) {
+      //p1 = new Player(x,y);
+    }
+
+    //read map.png
+    x++;
+    if (x == map.width) {
+      x = 0;
+      y++;
+    }
+  }
 }
 
 void draw() {
