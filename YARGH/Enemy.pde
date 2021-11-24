@@ -49,6 +49,9 @@ class Enemy extends GameObject {
         if (d <= size/2 +  myOb.size/2) {
           myOb.hp--;
           hp=hp-25;
+          if (hp <= 0) {
+            OBJ.add(new Loot(loc.x, loc.y, roomX, roomY));
+          }
         }
       }
       i++;

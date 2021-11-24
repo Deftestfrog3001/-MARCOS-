@@ -1,16 +1,22 @@
 //settings
+  //loot types
+  int AMMO = 0;
+  int DOSH = 1;
+  int WEAPON = 2;
+  int CONSUMABLE = 3;
+
   //enemies
   int NightStalker_HP = 50;
   int NightStalker_SIZE = 50;
   
-  
-  
   //weapons
   int Sniper_thr = 100;
   int Sniper_PS = 20;
+  int Sniper_SP = 0;
   
-  int MP5_thr = 10;
+  int MP5_thr = 1;
   int MP5_PS = 8;
+  int MP5_SP = 25;
 
 //sound
 import ddf.minim.*;

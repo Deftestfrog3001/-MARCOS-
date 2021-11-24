@@ -4,6 +4,7 @@ class GameObject {
   PVector vel;
   int size; 
   int roomX, roomY;
+  color c;
 
   GameObject() {
     loc = new PVector(width/2, height/2);
@@ -25,17 +26,15 @@ class GameObject {
   }
 
   boolean RoomWith(GameObject OBJ) {
-   
+
     return (roomX == OBJ.roomX && roomY == OBJ.roomY);
   }
 
   boolean CollidingWith(GameObject OBJ) {
     float d = dist(OBJ.loc.x, OBJ.loc.y, loc.x, loc.y);
-    if (RoomWith(OBJ) && d <= OBJ.size/2 + size/2) {
+    if (RoomWith(OBJ) && d <= OBJ.size + size) {
       return true;
-      
-    }
-    else
+    } else
       return false;
   }
 }

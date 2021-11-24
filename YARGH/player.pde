@@ -11,7 +11,7 @@ class Player extends GameObject {
     speed = 4;
     roomX = 7;
     roomY = 1;
-    myWeapon = new Sniper();
+    myWeapon = new Weapon();
     ArrayList <Weapon> myWeapon;
   }
 
@@ -36,6 +36,7 @@ class Player extends GameObject {
     fill(white);
     textSize(20);
     text(hp, loc.x, loc.y);
+    println("hp:" + hp);
   }
 
   void act() {
@@ -80,7 +81,7 @@ class Player extends GameObject {
       myWeapon.fire();
     }
 
-    //take damage from
+    //collision
     int i = 0;
     while (i < OBJ.size()) {
       GameObject myOb = OBJ.get(i);
@@ -91,10 +92,16 @@ class Player extends GameObject {
       }
       //enemy_touch
       if (myOb instanceof Enemy && CollidingWith(myOb)) {
-        hp = hp - 25;
+        hp = hp - 1;
         //println(myOb.roomX, myOb.roomY, roomX, roomY);
       }
-      //println("?");
+      if (myOb instanceof Loot && CollidingWith(myOb)) {
+        Loot Loot = (Loot) myOb;
+        if (Loot.type == WEAPON) {
+          myWeapon = Loot.w;
+          Loot.hp = 0;
+        }
+      }
       i++;
     }
   }

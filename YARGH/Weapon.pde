@@ -3,6 +3,7 @@ class Weapon {
   int shotTimer;
   int threshold;
   int projectileSpeed;
+  int spread;
 
   //default weapon
   Weapon() {
@@ -11,10 +12,11 @@ class Weapon {
     projectileSpeed = 5;
   }
 
-  Weapon(int thr, int ps) {
+  Weapon(int thr, int ps, int sp) {
     shotTimer = 0;
     threshold = thr;
     projectileSpeed = ps;
+    spread = sp;
   }
 
   void update() {
