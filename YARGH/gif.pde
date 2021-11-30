@@ -1,5 +1,5 @@
 class gif {
-  
+
   PImage[] images;
   int currentImg;
   int rate;
@@ -10,7 +10,7 @@ class gif {
     currentImg = 0;
     rate = 1;
   }
-  
+
   gif(int n, int r, String prefix, String suffix) {
     images = new PImage[n];
     loadImages(prefix, suffix);
@@ -21,6 +21,13 @@ class gif {
   void show() {
     if (currentImg >= images.length) currentImg = 0;
     image(images[currentImg], width/2, height/2, width, height);
+    if (frameCount % rate == 0) currentImg++;
+  }
+
+  void show(float x, float y, float w, float h) {
+    println(currentImg);
+    if (currentImg >= images.length) currentImg = 0;
+    image(images[currentImg], x, y, w, h);
     if (frameCount % rate == 0) currentImg++;
   }
 

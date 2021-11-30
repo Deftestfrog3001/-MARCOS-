@@ -1,22 +1,22 @@
 //settings
-  //loot types
-  int AMMO = 0;
-  int DOSH = 1;
-  int WEAPON = 2;
-  int CONSUMABLE = 3;
+//loot types
+int AMMO = 0;
+int DOSH = 1;
+int WEAPON = 2;
+int CONSUMABLE = 3;
 
-  //enemies
-  int NightStalker_HP = 50;
-  int NightStalker_SIZE = 50;
-  
-  //weapons
-  int Sniper_thr = 100;
-  int Sniper_PS = 20;
-  int Sniper_SP = 0;
-  
-  int MP5_thr = 1;
-  int MP5_PS = 8;
-  int MP5_SP = 25;
+//enemies
+int NightStalker_HP = 50;
+int NightStalker_SIZE = 50;
+
+//weapons
+int Sniper_thr = 100;
+int Sniper_PS = 20;
+int Sniper_SP = 0;
+
+int MP5_thr = 1;
+int MP5_PS = 8;
+int MP5_SP = 25;
 
 //sound
 import ddf.minim.*;
@@ -31,12 +31,16 @@ Minim minim;
 AudioPlayer intro;
 
 //interactions
-boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
+boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey, Pkey;
 boolean mouseReleased;
 boolean hadPressed;
 
 //gifs
 gif campfire;
+gif manUp;
+gif manDown;
+gif manLeft;
+gif manRight;
 
 //fonts
 PFont Pixel;
@@ -72,6 +76,9 @@ final int LOSS=4;
 
 //buttons
 Button StartB;
+Button HP;
+Button AGL;
+Button DMG;
 
 //Game objects
 ArrayList<GameObject> OBJ;
@@ -92,13 +99,22 @@ void setup() {
   imageMode(CENTER);
   colorMode(HSB, 360, 100, 100);
   Pixel = createFont("alagard.ttf", 1);
-  campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
   map = loadImage("map.png");
+  
+  //loadFonts
   textFont(Pixel);
+  
+  //loadGifs
+  campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
+  manUp = new gif(4, 10, "man/up/sprite_", ".png");
+  manDown = new gif(4, 10, "man/down/sprite_", ".png");
+  manLeft = new gif(4, 10, "man/left/sprite_", ".png");
+  manRight = new gif(4, 10, "man/right/sprite_", ".png");
+
   p1 = new Player();
   myEnemy = new Enemy();
   myNightStalker = new NightStalker();
-  
+
 
   //cell size
   CellSize = 3;

@@ -1,42 +1,37 @@
 class Player extends GameObject {
 
-  float speed;
   Weapon myWeapon;
+  gif currentAct;
 
   Player() {
     super();
     loc = new PVector (width/2, height/2);
     vel = new PVector (0, 0);
-    hp = 100;
+    hpMax = hp = 100;
     speed = 4;
     roomX = 7;
     roomY = 1;
     myWeapon = new Weapon();
+    currentAct = manUp;
     ArrayList <Weapon> myWeapon;
+    size = 60;
   }
 
-  Player(int x, int y) {
-    super();
-    loc = new PVector (width/2, height/2);
-    vel = new PVector (0, 0);
-    hp = 1;
-    speed = 4;
-    roomX = x;
-    roomY = y;
-    //Weapon swap
-    myWeapon = new Weapon();
-    ArrayList <Weapon> myWeapon;
-  }
+  //Player(int x, int y) {
+  //  super();
+  //  loc = new PVector (width/2, height/2);
+  //  vel = new PVector (0, 0);
+  //  hp = 1;
+  //  speed = 4;
+  //  roomX = x;
+  //  roomY = y;
+  //  //Weapon swap
+  //  myWeapon = new Weapon();
+  //  ArrayList <Weapon> myWeapon;
+  //}
 
   void show() {
-    fill(aqua);
-    strokeWeight(5);
-    stroke(red);
-    circle(loc.x, loc.y, 40);
-    fill(white);
-    textSize(20);
-    text(hp, loc.x, loc.y);
-    println("hp:" + hp);
+    currentAct.show(loc.x, loc.y, size/1.5, size);
   }
 
   void act() {
@@ -52,6 +47,14 @@ class Player extends GameObject {
 
     if (!Wkey && !Skey) vel.y = 0;
     if (!Akey && !Dkey) vel.x = 0;
+
+    if (abs(vel.y) > abs(vel.x)) {
+      if (vel.y > 0) currentAct = manDown;
+      else currentAct = manUp;
+    } else {
+      if (vel.x > 0) currentAct = manRight;
+      else currentAct = manLeft;
+    }
 
     //exit detect
     //north

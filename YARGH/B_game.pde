@@ -7,6 +7,7 @@ void game() {
   //println(p1.loc);
   //println(p1.vel);
   //println(frameRate);
+  if (Pkey) mode = PAUSE;
 }
 
 void drawroom() {
