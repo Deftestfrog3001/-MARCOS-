@@ -54,8 +54,8 @@ class Player extends GameObject {
     } else {
       if (vel.x > 0) currentAct = manRight;
       else currentAct = manLeft;
-    }
-
+    } 
+    if ( vel.y == 0 && vel.x == 0) currentAct = manDown;
     //exit detect
     //north
     if (northRoom != white && loc.y <= height*0.1 && loc.x >= width/2-50 && loc.x <= width/2+50) {

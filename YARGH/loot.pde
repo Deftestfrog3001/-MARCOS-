@@ -1,7 +1,8 @@
 class Loot extends GameObject {
   
   int type;
-  Weapon w; 
+  Weapon w;
+  Potion p;
   
   Loot(float x, float y, int rx, int ry) {
     type = WEAPON;

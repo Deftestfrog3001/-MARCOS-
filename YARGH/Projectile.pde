@@ -1,4 +1,4 @@
-private class Projectile extends GameObject {
+class Projectile extends GameObject {
 
   int fs;
   int duration;

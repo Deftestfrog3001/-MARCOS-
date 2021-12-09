@@ -1,11 +1,11 @@
 class NightStalker extends Enemy {
 
   NightStalker() {
-    super(100, 50, 7, 3);
+    super(100, 50, 7, 3, 5);
   }
 
   NightStalker(int x, int y) {
-    super(NightStalker_HP, NightStalker_SIZE, x, y);
+    super(NightStalker_HP, NightStalker_SIZE, x, y, 5);
   }
 
   void show() {

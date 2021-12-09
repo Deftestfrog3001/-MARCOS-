@@ -40,7 +40,9 @@ class Button {
     }
     textSize(w/4);
     text(text, 0, 0);
+    noFill();
     popMatrix();
+    noFill();
 
     if (mouseReleased && mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
       clicked  = true;
