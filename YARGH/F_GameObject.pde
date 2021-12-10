@@ -1,4 +1,4 @@
-class GameObject {
+private class GameObject {
   int hp, hpMax;
   PVector loc;
   PVector vel;

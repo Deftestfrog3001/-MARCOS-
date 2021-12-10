@@ -19,14 +19,12 @@ class Button {
   void show() {
     //rectangle
     pushMatrix();
-    translate(x,y);
+    translate(x, y);
     rectMode(CENTER);
     noFill();
     noStroke();
     if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
-      
     } else {
-      
     }
     rect(0, 0, w, h, 30);
 

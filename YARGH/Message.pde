@@ -1,0 +1,3 @@
+class message extends GameObject {
+  
+}

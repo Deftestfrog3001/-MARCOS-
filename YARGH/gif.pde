@@ -25,7 +25,6 @@ class gif {
   }
 
   void show(float x, float y, float w, float h) {
-    println(currentImg);
     if (currentImg >= images.length) currentImg = 0;
     image(images[currentImg], x, y, w, h);
     if (frameCount % rate == 0) currentImg++;

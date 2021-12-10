@@ -79,6 +79,7 @@ Button StartB;
 Button HP;
 Button AGL;
 Button DMG;
+Button UnPause;
 
 //Game objects
 ArrayList<GameObject> OBJ;
@@ -91,6 +92,9 @@ NightStalker myNightStalker;
 int CellSize;
 
 void setup() {
+  HP  = new Button(">", width*0.1, height*0.3, 150, 100, red, white);
+  AGL  = new Button(">", width*0.1, height*0.6, 150, 100, red, white);
+  DMG  = new Button(">", width*0.1, height*0.9, 150, 100, red, white);
   frameRate(60);
   //fullScreen(FX2D);
   size(800, 600, FX2D);
@@ -100,10 +104,10 @@ void setup() {
   colorMode(HSB, 360, 100, 100);
   Pixel = createFont("alagard.ttf", 1);
   map = loadImage("map.png");
-  
+
   //loadFonts
   textFont(Pixel);
-  
+
   //loadGifs
   campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
   manUp = new gif(4, 10, "man/up/sprite_", ".png");
@@ -218,5 +222,4 @@ void draw() {
   } else if (mode==LOSS) {
     loss();
   }
-  //println("mode =" + mode);
 }

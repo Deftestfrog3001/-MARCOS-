@@ -7,8 +7,7 @@ void game() {
   //println(p1.loc);
   //println(p1.vel);
   //println(frameRate);
-  println("?");
-    if (Pkey) mode = PAUSE;
+  if (Pkey) mode = PAUSE;
 }
 
 void drawroom() {
@@ -94,7 +93,7 @@ void drawMiniMap() {
       fill(aqua);
     } else {
       if (c == white) {
-        fill (c);
+        fill (c, 100);
       } else {
         fill (c, 200);
       }
